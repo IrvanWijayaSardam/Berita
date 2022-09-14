@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.coroutines.coroutineContext
 
@@ -45,9 +46,7 @@ class AdapterNews(var listNews:ArrayList<ListNews>):
                 bundle.putString("jurnalis",holder.tvJurnalis.text.toString())
                 bundle.putString("tanggal",holder.tvTanggal.text.toString())
                 bundle.putString("detail",detail)
-                var intent = Intent(context,ActivityDetail::class.java)
-                intent.putExtras(bundle)
-                context.startActivity(intent)
+                Navigation.findNavController(holder.itemView).navigate(R.id.action_mainFragment_to_detailFragment,bundle)
             }
         })
     }
